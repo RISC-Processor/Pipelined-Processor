@@ -1,0 +1,258 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/RISC-Processor/Processor-In-DE2-115 - Copy/simulation/modelsim
+vadder
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1733557525
+!i10b 1
+!s100 ZH=hHgWEO:;h[FSTXEl:72
+I_l^Ooc]22NB76Nh8:1h6O2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 adder_sv_unit
+S1
+R0
+Z4 w1729173993
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/adder.sv
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/adder.sv
+L0 3
+Z5 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1733557525.000000
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/adder.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work {+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files}
+Z8 tCvgOpt 0
+valu
+Z9 !s110 1733557524
+!i10b 1
+!s100 9GinV2G=LE9TkG09_>MWj0
+IYhQ:3JON`a^iTD_jDREZ<3
+R3
+R0
+w1729782681
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/alu.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/alu.v
+L0 1
+R5
+r1
+!s85 0
+31
+Z10 !s108 1733557524.000000
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/alu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/alu.v|
+!i113 1
+Z11 o-vlog01compat -work work
+Z12 !s92 -vlog01compat -work work {+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files}
+R8
+vcontrol
+R9
+!i10b 1
+!s100 iiKPX=jbZaai]bZ1EzI6S0
+I9R3WFZj<5g<NFV85P`o:m3
+R3
+R0
+w1729782911
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control.v
+L0 1
+R5
+r1
+!s85 0
+31
+R10
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control.v|
+!i113 1
+R11
+R12
+R8
+vcontrol_alu_decoder
+R9
+!i10b 1
+!s100 JM<Uz[J=>P89Zb8j=o2Nj3
+IOh7:`IDFn]V?SO_JKG?J@1
+R3
+R0
+w1729783274
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_alu_decoder.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_alu_decoder.v
+L0 1
+R5
+r1
+!s85 0
+31
+R10
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_alu_decoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_alu_decoder.v|
+!i113 1
+R11
+R12
+R8
+vcontrol_main_decoder
+R9
+!i10b 1
+!s100 L^oElC`_EHWDEh07zXS6Z3
+I3E[<1micZDKnAjLmWRQkn2
+R3
+R0
+w1729782867
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_main_decoder.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_main_decoder.v
+L0 1
+R5
+r1
+!s85 0
+31
+R10
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_main_decoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/control_main_decoder.v|
+!i113 1
+R11
+R12
+R8
+vdata_memory
+R9
+!i10b 1
+!s100 DUWg=WQlCJ8;mnS__B5Pe2
+Io=h1Y<CRm[NGac7Zk4fN?3
+R3
+R0
+R4
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/data_memory.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/data_memory.v
+Z13 L0 23
+R5
+r1
+!s85 0
+31
+R10
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/data_memory.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/data_memory.v|
+!i113 1
+R11
+R12
+R8
+vextend
+R9
+!i10b 1
+!s100 ci^>gT2FCLDIaUR^Udz;@2
+IoEoBTB9VUKE49f;OMidkN3
+R3
+R0
+w1729783035
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/extend.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/extend.v
+L0 1
+R5
+r1
+!s85 0
+31
+Z14 !s108 1733557523.000000
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/extend.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/extend.v|
+!i113 1
+R11
+R12
+R8
+vimem
+R1
+R2
+!i10b 1
+!s100 :oP4Lne98Om]n7^6da^iG0
+IWNd^BgaLLjaQizokSEkWT1
+R3
+!s105 imem_sv_unit
+S1
+R0
+w1732963553
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/imem.sv
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/imem.sv
+L0 3
+R5
+r1
+!s85 0
+31
+R10
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/imem.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/imem.sv|
+!i113 1
+R6
+R7
+R8
+vpc
+Z15 !s110 1733557523
+!i10b 1
+!s100 Eoec@NJ0@1WBzCd:O<k<31
+ImE_?;M]R<flB47H0nUZVI2
+R3
+R0
+R4
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/pc.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/pc.v
+R13
+R5
+r1
+!s85 0
+31
+R14
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/pc.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/pc.v|
+!i113 1
+R11
+R12
+R8
+vprocessor_tb
+R15
+!i10b 1
+!s100 =z4IC=PGe@BI6El`D_^[O0
+IO;Jj:@SjXE@GA]=0QRcn^0
+R3
+R0
+w1729783995
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/processor_tb.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/processor_tb.v
+L0 3
+R5
+r1
+!s85 0
+31
+R14
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/processor_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/processor_tb.v|
+!i113 1
+R11
+R12
+R8
+vregister_file
+R15
+!i10b 1
+!s100 idXdm6LYn@d[WoOb0Kd341
+IVIddeBoH62j;ncRE6@HMB2
+R3
+R0
+w1732964625
+8D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/register_file.v
+FD:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/register_file.v
+L0 1
+R5
+r1
+!s85 0
+31
+R14
+!s107 D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/register_file.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files|D:/RISC-Processor/Processor-In-DE2-115 - Copy/processor_source_files/register_file.v|
+!i113 1
+R11
+R12
+R8

@@ -1,0 +1,16 @@
+addi x0 x0 0
+lw x6 -4(x9)
+sw x6 8(x9)
+or x4 x5 x6
+beq x4 x4 24
+addi x0 x0 0
+addi x0 x0 0
+addi x0 x0 0
+addi x0 x0 0
+addi x0 x0 0
+or x4 x5 x6
+addi x12 x5 17
+lui x7 4560
+jal x2 -40
+addi x0 x0 0
+addi x0 x0 0

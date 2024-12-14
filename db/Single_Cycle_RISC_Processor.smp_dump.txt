@@ -1,0 +1,23 @@
+
+State Machine - |Single_Cycle_RISC_Processor|receiver:uart_Rx|state
+Name state.Ready_clearing state.RX_STATE_STOP state.RX_STATE_DATA state.RX_STATE_START 
+state.RX_STATE_START 0 0 0 0 
+state.RX_STATE_DATA 0 0 1 1 
+state.RX_STATE_STOP 0 1 0 1 
+state.Ready_clearing 1 0 0 1 
+
+State Machine - |Single_Cycle_RISC_Processor|transmitter:uart_Tx|state
+Name state.TX_STATE_STOP state.TX_STATE_DATA state.TX_STATE_START state.TX_STATE_IDLE 
+state.TX_STATE_IDLE 0 0 0 0 
+state.TX_STATE_START 0 0 1 1 
+state.TX_STATE_DATA 0 1 0 1 
+state.TX_STATE_STOP 1 0 0 1 
+
+State Machine - |Single_Cycle_RISC_Processor|processor:processor_u|register_file:register_file_inst|current_state
+Name current_state.REG_SENT current_state.BYTE_SENT current_state.SEND_BYTE current_state.OUTPUT_BYTE current_state.OUTPUT_REG current_state.IDLE 
+current_state.IDLE 0 0 0 0 0 0 
+current_state.OUTPUT_REG 0 0 0 0 1 1 
+current_state.OUTPUT_BYTE 0 0 0 1 0 1 
+current_state.SEND_BYTE 0 0 1 0 0 1 
+current_state.BYTE_SENT 0 1 0 0 0 1 
+current_state.REG_SENT 1 0 0 0 0 1 

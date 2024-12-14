@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Dec 08 00:01:29 2024
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : Single_Cycle_RISC_Processor
+Top-level Entity Name : Single_Cycle_RISC_Processor
+Family : Cyclone IV E
+Total logic elements : 7,717
+    Total combinational functions : 6,783
+    Dedicated logic registers : 2,184
+Total registers : 2184
+Total pins : 72
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

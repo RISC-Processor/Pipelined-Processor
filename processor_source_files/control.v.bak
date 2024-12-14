@@ -1,0 +1,44 @@
+module control
+    #(parameter INSTR_WIDTH = 32)
+    (
+        input zero,
+        input [INSTR_WIDTH - 1: 0] instr,
+        output branch,
+        output pc_src,
+        output result_src,
+        output mem_write,
+        output [2:0] alu_control,
+        output alu_src,
+        output [1:0] imm_src,
+        output reg_write
+    );
+
+    wire [6:0] opcode = instr[6:0];
+    wire [6:0] funct7 = instr[31:25];
+    wire [2:0] funct3 = instr[14:12];
+
+    wire branch;
+
+    control_main_decoder control_main_decoder_inst (
+        .opcode(opcode),
+        .brach(branch),
+        .result_src(result_src),
+        .mem_write(mem_write),
+        .alu_control(alu_control),
+        .alu_src(alu_src),
+        .imm_src(imm_src),
+        .reg_write(reg_write),
+        .alu_op(alu_op)
+    );
+
+    control_alu_decoder control_alu_decoder_inst (
+        .opcode(opcode),
+        .funct7(funct7),
+        .funct3(funct3),
+        .alu_op(alu_op),
+        .alu_control(alu_control)
+    );
+
+    assign pc_src = zero & branch;
+
+endmodule
