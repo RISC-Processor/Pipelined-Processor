@@ -50,6 +50,8 @@ module processor
     wire [2:0] imm_src;
     wire reg_write;
 
+    wire [INST_MEMORY_DATA_BUS_WIDTH - 1:0] instr_in;
+
     assign src_a = read_data_1;
     assign src_b = alu_src ? imm_ext : read_data_2;
     assign write_data = result_src == 2'b00 ? alu_result : (result_src == 2'b01 ? read_data : {{BUS_WIDTH - INST_MEMORY_ADDR_BUS_WIDTH{1'b0}}, pc_4});
@@ -95,13 +97,19 @@ module processor
     // Instantiate instruction memory module
     imem # (INST_MEMORY_ADDR_BUS_WIDTH, INST_MEMORY_DATA_BUS_WIDTH) imem_inst (
         .a(pc_out),
-        .rd(instr),
+        .rd(instr_in),
 //		  .LEDG(LEDG)
 		  .instIn(instIn),
 	     .enable(enable),
 		  .LEDR(LEDR)
     );
 	
+    // Instantiate a pipeline register to store the instruction
+    pipeline_register #(BUS_WIDTH) pipeline_register_inst_instr (
+        .clk(clk),
+        .din(instr_in),
+        .dout(instr)
+    );
 
     // Insntiate register_file module
     register_file #(REG_FILE_ADDR_BUS_WIDTH, REG_FILE_DATA_BUS_WIDTH) register_file_inst (
