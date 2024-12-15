@@ -53,6 +53,12 @@ module processor
     wire [INST_MEMORY_DATA_BUS_WIDTH - 1:0] IF_ID_instr;
     wire [INST_MEMORY_ADDR_BUS_WIDTH - 1:0] IF_ID_pc_out;
 
+    wire [INST_MEMORY_DATA_BUS_WIDTH - 1:0] ID_EX_instr;
+    wire [INST_MEMORY_ADDR_BUS_WIDTH - 1:0] ID_EX_pc_out;
+    wire [REG_FILE_DATA_BUS_WIDTH - 1:0] ID_EX_read_data_1;
+    wire [REG_FILE_DATA_BUS_WIDTH - 1:0] ID_EX_read_data_2;
+    wire [BUS_WIDTH - 1:0] ID_EX_imm_ext;
+
     assign src_a = read_data_1;
     assign src_b = alu_src ? imm_ext : read_data_2;
     assign write_data = result_src == 2'b00 ? alu_result : (result_src == 2'b01 ? read_data : {{BUS_WIDTH - INST_MEMORY_ADDR_BUS_WIDTH{1'b0}}, pc_4});
@@ -63,7 +69,7 @@ module processor
     // Instantiate control module
     control # (BUS_WIDTH) control_inst (
         .zero(zero),
-        .instr(instr),
+        .instr(IF_ID_instr),
         .pc_src(pc_src),
         .result_src(result_src),
         .mem_write(mem_write),
@@ -106,14 +112,14 @@ module processor
     );
 	
     // Instantiate a pipeline register to store the instruction
-    pipeline_register #(INST_MEMORY_DATA_BUS_WIDTH) pipeline_register_inst_instr (
+    pipeline_register #(INST_MEMORY_DATA_BUS_WIDTH) pipeline_register_inst_IF_ID_instr (
         .clk(clk),
         .din(instr),
         .dout(IF_ID_instr)
     );
 
     // Instantiate a pipeline register to store the program counter
-    pipeline_register #(INST_MEMORY_ADDR_BUS_WIDTH) pipeline_register_inst_pc (
+    pipeline_register #(INST_MEMORY_ADDR_BUS_WIDTH) pipeline_register_IF_ID_inst_pc (
         .clk(clk),
         .din(pc_out),
         .dout(IF_ID_pc_out)
@@ -123,9 +129,9 @@ module processor
     register_file #(REG_FILE_ADDR_BUS_WIDTH, REG_FILE_DATA_BUS_WIDTH) register_file_inst (
         .clk(clk),
 		.rst(rst),
-        .addr1(instr[19:15]),
-        .addr2(instr[24:20]),
-        .addr3(instr[11:7]),
+        .addr1(IF_ID_instr[19:15]),
+        .addr2(IF_ID_instr[24:20]),
+        .addr3(instr[11:7]), //TODO
         .write_data(write_data),
         .write_en(reg_write),
         .read_data1(read_data_1),
@@ -142,8 +148,43 @@ module processor
     // Insntiate extend module
     extend #(BUS_WIDTH) extend_inst (
         .imm_src(imm_src),
-        .instr(instr),
+        .instr(IF_ID_instr),
         .extended_imm(imm_ext)
+    );
+
+    // Instantiate a pipeline register to store the instruction
+    pipeline_register #(INST_MEMORY_DATA_BUS_WIDTH) pipeline_register_inst_ID_EX_instr (
+        .clk(clk),
+        .din(IF_ID_instr),
+        .dout(ID_EX_instr)
+    );
+
+    // Instantiate a pipeline register to store the program counter
+    pipeline_register #(INST_MEMORY_ADDR_BUS_WIDTH) pipeline_register_ID_EX_inst_pc (
+        .clk(clk),
+        .din(IF_ID_pc_out),
+        .dout(ID_EX_pc_out)
+    );
+
+    // Instantiate a pipeline register to store the read data 1
+    pipeline_register #(REG_FILE_DATA_BUS_WIDTH) pipeline_register_inst_ID_EX_read_data_1 (
+        .clk(clk),
+        .din(read_data_1),
+        .dout(ID_EX_read_data_1)
+    );
+
+    // Instantiate a pipeline register to store the read data 2
+    pipeline_register #(REG_FILE_DATA_BUS_WIDTH) pipeline_register_inst_ID_EX_read_data_2 (
+        .clk(clk),
+        .din(read_data_2),
+        .dout(ID_EX_read_data_2)
+    );
+
+    // Instantiate a pipeline register to store the imm_ext
+    pipeline_register #(BUS_WIDTH) pipeline_register_inst_ID_EX_imm_ext (
+        .clk(clk),
+        .din(imm_ext),
+        .dout(ID_EX_imm_ext)
     );
 
     // Insntiate alu module
