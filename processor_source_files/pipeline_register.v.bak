@@ -3,8 +3,8 @@
 module pipeline_register #(parameter NUM_BITS = 16) (
     input wire clk,
     input wire [NUM_BITS - 1:0] din,
-    output reg [NUM_BITS - 1:0] dout
-)
+    output wire [NUM_BITS - 1:0] dout
+);
 
     reg [NUM_BITS - 1:0] reg_data;
 
