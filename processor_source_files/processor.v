@@ -58,9 +58,13 @@ module processor
     wire [REG_FILE_DATA_BUS_WIDTH - 1:0] ID_EX_read_data_1;
     wire [REG_FILE_DATA_BUS_WIDTH - 1:0] ID_EX_read_data_2;
     wire [BUS_WIDTH - 1:0] ID_EX_imm_ext;
+    wire [1:0] ID_EX_result_src;
+    wire ID_EX_mem_write;
+    wire ID_EX_alu_src;
+    wire ID_EX_reg_write;
 
     assign src_a = read_data_1;
-    assign src_b = alu_src ? imm_ext : read_data_2;
+    assign src_b = ID_EX_alu_src ? imm_ext : read_data_2;
     assign write_data = result_src == 2'b00 ? alu_result : (result_src == 2'b01 ? read_data : {{BUS_WIDTH - INST_MEMORY_ADDR_BUS_WIDTH{1'b0}}, pc_4});
     assign pc_next = pc_src ? pc_target[INST_MEMORY_ADDR_BUS_WIDTH - 1:0] : pc_4;
 	 
@@ -68,9 +72,10 @@ module processor
 
     // Instantiate control module
     control # (BUS_WIDTH) control_inst (
+        .clk(clk),
         .zero(zero),
         .instr(IF_ID_instr),
-        .pc_src(pc_src),
+        // .pc_src(pc_src),
         .result_src(result_src),
         .mem_write(mem_write),
         .alu_control(alu_control),
@@ -185,6 +190,34 @@ module processor
         .clk(clk),
         .din(imm_ext),
         .dout(ID_EX_imm_ext)
+    );
+
+    // Instantiate a pipeline register to store the result_src
+    pipeline_register #(2) pipeline_register_inst_result_src (
+        .clk(clk),
+        .din(result_src),
+        .dout(ID_EX_result_src)
+    );
+
+    // Instantiate a pipeline register to store the mem_write
+    pipeline_register #(1) pipeline_register_inst_mem_write (
+        .clk(clk),
+        .din(mem_write),
+        .dout(ID_EX_mem_write)
+    );
+
+    // Instantiate a pipeline register to store the alu_src
+    pipeline_register #(1) pipeline_register_inst_alu_src (
+        .clk(clk),
+        .din(alu_src),
+        .dout(ID_EX_alu_src)
+    );
+
+    // Instantiate a pipeline register to store the reg_write
+    pipeline_register #(1) pipeline_register_inst_reg_write (
+        .clk(clk),
+        .din(reg_write),
+        .dout(ID_EX_reg_write)
     );
 
     // Insntiate alu module
