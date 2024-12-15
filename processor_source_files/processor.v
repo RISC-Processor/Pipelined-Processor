@@ -63,8 +63,8 @@ module processor
     wire ID_EX_alu_src;
     wire ID_EX_reg_write;
 
-    assign src_a = read_data_1;
-    assign src_b = ID_EX_alu_src ? imm_ext : read_data_2;
+    assign src_a = ID_EX_read_data_1;
+    assign src_b = ID_EX_alu_src ? ID_EX_imm_ext : ID_EX_read_data_2;
     assign write_data = result_src == 2'b00 ? alu_result : (result_src == 2'b01 ? read_data : {{BUS_WIDTH - INST_MEMORY_ADDR_BUS_WIDTH{1'b0}}, pc_4});
     assign pc_next = pc_src ? pc_target[INST_MEMORY_ADDR_BUS_WIDTH - 1:0] : pc_4;
 	 
@@ -101,8 +101,8 @@ module processor
 
     // Instantiate adder for adding pc and imm_ext
     adder # (BUS_WIDTH) adder_inst2 (
-        .a({{BUS_WIDTH - INST_MEMORY_ADDR_BUS_WIDTH{1'b0}}, pc_out}),
-        .b(imm_ext),
+        .a({{BUS_WIDTH - INST_MEMORY_ADDR_BUS_WIDTH{1'b0}}, ID_EX_pc_out}),
+        .b(ID_EX_imm_ext),
         .y(pc_target)
     );
     
