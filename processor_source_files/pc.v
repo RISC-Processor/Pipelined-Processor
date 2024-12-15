@@ -24,7 +24,7 @@ module pc
     #(parameter BUS_WIDTH = 16)
     (
         input clk,
-		  input rst,
+		input rst,
         input [BUS_WIDTH - 1:0] pc_next,
         output reg [BUS_WIDTH - 1:0] pc
     );
