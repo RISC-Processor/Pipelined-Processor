@@ -10,7 +10,8 @@ module control
         output [2:0] alu_control,
         output alu_src,
         output [2:0] imm_src,
-        output reg_write
+        output reg_write,
+        output branch
     );
 
     wire [6:0] opcode = instr[6:0];
@@ -24,7 +25,7 @@ module control
     wire [2:0] ID_EX_funct3;
     wire [1:0] ID_EX_alu_op;
 
-    wire branch;
+    // wire branch;
     wire jump;
 
     control_main_decoder control_main_decoder_inst (
