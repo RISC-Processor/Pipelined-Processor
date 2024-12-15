@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Sat Dec 14 12:34:56 2024
+Analysis & Synthesis Status : Successful - Sun Dec 15 22:41:03 2024
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : Single_Cycle_RISC_Processor
 Top-level Entity Name : Single_Cycle_RISC_Processor
 Family : Cyclone IV E
-Total logic elements : 7,723
-    Total combinational functions : 6,789
-    Dedicated logic registers : 2,184
-Total registers : 2184
+Total logic elements : 7,774
+    Total combinational functions : 6,731
+    Dedicated logic registers : 2,524
+Total registers : 2524
 Total pins : 72
 Total virtual pins : 0
-Total memory bits : 0
+Total memory bits : 63
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0

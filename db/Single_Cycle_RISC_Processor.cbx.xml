@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="Single_Cycle_RISC_Processor">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_result_src|altshift_taps:reg_data_rtl_0" CBX_FILE_NAME="shift_taps_86m.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
