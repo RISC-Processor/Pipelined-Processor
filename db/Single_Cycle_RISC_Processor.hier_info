@@ -1,121 +1,7 @@
-|Single_Cycle_RISC_Processor
-CLOCK_50 => CLOCK_50.IN4
-CLOCK2_50 => ~NO_FANOUT~
-CLOCK3_50 => ~NO_FANOUT~
-LEDG[0] << processor:processor_u.LEDG
-LEDG[1] << processor:processor_u.LEDG
-LEDG[2] << processor:processor_u.LEDG
-LEDG[3] << processor:processor_u.LEDG
-LEDG[4] << processor:processor_u.LEDG
-LEDG[5] << processor:processor_u.LEDG
-LEDG[6] << processor:processor_u.LEDG
-LEDG[7] << processor:processor_u.LEDG
-LEDG[8] << <GND>
-LEDR[0] << processor:processor_u.LEDR
-LEDR[1] << processor:processor_u.LEDR
-LEDR[2] << processor:processor_u.LEDR
-LEDR[3] << processor:processor_u.LEDR
-LEDR[4] << processor:processor_u.LEDR
-LEDR[5] << processor:processor_u.LEDR
-LEDR[6] << processor:processor_u.LEDR
-LEDR[7] << processor:processor_u.LEDR
-LEDR[8] << <GND>
-LEDR[9] << <GND>
-LEDR[10] << <GND>
-LEDR[11] << <GND>
-LEDR[12] << <GND>
-LEDR[13] << <GND>
-LEDR[14] << <GND>
-LEDR[15] << <GND>
-LEDR[16] << <GND>
-LEDR[17] << <GND>
-KEY[0] => KEY[0].IN1
-KEY[1] => KEY[1].IN1
-KEY[2] => KEY[2].IN1
-KEY[3] => ~NO_FANOUT~
-EX_IO[0] <> transmitter:uart_Tx.Tx
-EX_IO[1] <> receiver:uart_Rx.Rx
-EX_IO[2] <> <UNC>
-EX_IO[3] <> <UNC>
-EX_IO[4] <> <UNC>
-EX_IO[5] <> <UNC>
-EX_IO[6] <> <UNC>
-SW[0] => ~NO_FANOUT~
-SW[1] => ~NO_FANOUT~
-SW[2] => ~NO_FANOUT~
-SW[3] => ~NO_FANOUT~
-SW[4] => ~NO_FANOUT~
-SW[5] => ~NO_FANOUT~
-SW[6] => ~NO_FANOUT~
-SW[7] => ~NO_FANOUT~
-SW[8] => ~NO_FANOUT~
-SW[9] => ~NO_FANOUT~
-SW[10] => ~NO_FANOUT~
-SW[11] => ~NO_FANOUT~
-SW[12] => ~NO_FANOUT~
-SW[13] => ~NO_FANOUT~
-SW[14] => ~NO_FANOUT~
-SW[15] => ~NO_FANOUT~
-SW[16] => ~NO_FANOUT~
-SW[17] => ~NO_FANOUT~
-LCD_BLON << <GND>
-LCD_DATA[0] <> <UNC>
-LCD_DATA[1] <> <UNC>
-LCD_DATA[2] <> <UNC>
-LCD_DATA[3] <> <UNC>
-LCD_DATA[4] <> <UNC>
-LCD_DATA[5] <> <UNC>
-LCD_DATA[6] <> <UNC>
-LCD_DATA[7] <> <UNC>
-LCD_EN << <GND>
-LCD_ON << <GND>
-LCD_RS << <GND>
-LCD_RW << <GND>
+|processor_tb
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u
-clk => clk.IN34
-rst => rst.IN2
-LEDG[0] <= register_file:register_file_inst.LEDG
-LEDG[1] <= register_file:register_file_inst.LEDG
-LEDG[2] <= register_file:register_file_inst.LEDG
-LEDG[3] <= register_file:register_file_inst.LEDG
-LEDG[4] <= register_file:register_file_inst.LEDG
-LEDG[5] <= register_file:register_file_inst.LEDG
-LEDG[6] <= register_file:register_file_inst.LEDG
-LEDG[7] <= register_file:register_file_inst.LEDG
-LEDR[0] <= imem:imem_inst.LEDR
-LEDR[1] <= imem:imem_inst.LEDR
-LEDR[2] <= imem:imem_inst.LEDR
-LEDR[3] <= imem:imem_inst.LEDR
-LEDR[4] <= imem:imem_inst.LEDR
-LEDR[5] <= imem:imem_inst.LEDR
-LEDR[6] <= imem:imem_inst.LEDR
-LEDR[7] <= imem:imem_inst.LEDR
-en => en.IN1
-Tx_busy => Tx_busy.IN1
-dout[0] <= register_file:register_file_inst.dout
-dout[1] <= register_file:register_file_inst.dout
-dout[2] <= register_file:register_file_inst.dout
-dout[3] <= register_file:register_file_inst.dout
-dout[4] <= register_file:register_file_inst.dout
-dout[5] <= register_file:register_file_inst.dout
-dout[6] <= register_file:register_file_inst.dout
-dout[7] <= register_file:register_file_inst.dout
-Ready_Byte <= register_file:register_file_inst.Ready_Byte
-clk_50M => clk_50M.IN1
-instIn[0] => instIn[0].IN1
-instIn[1] => instIn[1].IN1
-instIn[2] => instIn[2].IN1
-instIn[3] => instIn[3].IN1
-instIn[4] => instIn[4].IN1
-instIn[5] => instIn[5].IN1
-instIn[6] => instIn[6].IN1
-instIn[7] => instIn[7].IN1
-enable => enable.IN1
-
-
-|Single_Cycle_RISC_Processor|processor:processor_u|control:control_inst
+|processor_tb|control:control_inst
 clk => clk.IN4
 zero => ~NO_FANOUT~
 instr[0] => opcode[0].IN2
@@ -164,7 +50,7 @@ reg_write <= control_main_decoder:control_main_decoder_inst.reg_write
 branch <= control_main_decoder:control_main_decoder_inst.branch
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|control:control_inst|control_main_decoder:control_main_decoder_inst
+|processor_tb|control:control_inst|control_main_decoder:control_main_decoder_inst
 opcode[0] => Decoder0.IN6
 opcode[1] => Decoder0.IN5
 opcode[2] => Decoder0.IN4
@@ -186,7 +72,7 @@ alu_op[1] <= WideOr9.DB_MAX_OUTPUT_PORT_TYPE
 jump <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|control:control_inst|pipeline_register:pipeline_register_inst_alu_op
+|processor_tb|control:control_inst|pipeline_register:pipeline_register_inst_alu_op
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 din[0] => reg_data[0].DATAIN
@@ -195,31 +81,7 @@ dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|control:control_inst|pipeline_register:pipeline_register_inst_opcode
-clk => reg_data[0].CLK
-clk => reg_data[1].CLK
-clk => reg_data[2].CLK
-clk => reg_data[3].CLK
-clk => reg_data[4].CLK
-clk => reg_data[5].CLK
-clk => reg_data[6].CLK
-din[0] => reg_data[0].DATAIN
-din[1] => reg_data[1].DATAIN
-din[2] => reg_data[2].DATAIN
-din[3] => reg_data[3].DATAIN
-din[4] => reg_data[4].DATAIN
-din[5] => reg_data[5].DATAIN
-din[6] => reg_data[6].DATAIN
-dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
-dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
-dout[2] <= reg_data[2].DB_MAX_OUTPUT_PORT_TYPE
-dout[3] <= reg_data[3].DB_MAX_OUTPUT_PORT_TYPE
-dout[4] <= reg_data[4].DB_MAX_OUTPUT_PORT_TYPE
-dout[5] <= reg_data[5].DB_MAX_OUTPUT_PORT_TYPE
-dout[6] <= reg_data[6].DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Single_Cycle_RISC_Processor|processor:processor_u|control:control_inst|pipeline_register:pipeline_register_inst_funct7
+|processor_tb|control:control_inst|pipeline_register:pipeline_register_inst_opcode
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -243,7 +105,31 @@ dout[5] <= reg_data[5].DB_MAX_OUTPUT_PORT_TYPE
 dout[6] <= reg_data[6].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|control:control_inst|pipeline_register:pipeline_register_inst_funct3
+|processor_tb|control:control_inst|pipeline_register:pipeline_register_inst_funct7
+clk => reg_data[0].CLK
+clk => reg_data[1].CLK
+clk => reg_data[2].CLK
+clk => reg_data[3].CLK
+clk => reg_data[4].CLK
+clk => reg_data[5].CLK
+clk => reg_data[6].CLK
+din[0] => reg_data[0].DATAIN
+din[1] => reg_data[1].DATAIN
+din[2] => reg_data[2].DATAIN
+din[3] => reg_data[3].DATAIN
+din[4] => reg_data[4].DATAIN
+din[5] => reg_data[5].DATAIN
+din[6] => reg_data[6].DATAIN
+dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= reg_data[2].DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= reg_data[3].DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= reg_data[4].DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= reg_data[5].DB_MAX_OUTPUT_PORT_TYPE
+dout[6] <= reg_data[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor_tb|control:control_inst|pipeline_register:pipeline_register_inst_funct3
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -255,7 +141,7 @@ dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
 dout[2] <= reg_data[2].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|control:control_inst|control_alu_decoder:control_alu_decoder_inst
+|processor_tb|control:control_inst|control_alu_decoder:control_alu_decoder_inst
 opcode[0] => ~NO_FANOUT~
 opcode[1] => ~NO_FANOUT~
 opcode[2] => ~NO_FANOUT~
@@ -281,7 +167,7 @@ alu_control[1] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
 alu_control[2] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pc:pc_inst
+|processor_tb|pc:pc_inst
 clk => pc[0]~reg0.CLK
 clk => pc[1]~reg0.CLK
 clk => pc[2]~reg0.CLK
@@ -348,7 +234,7 @@ pc[14] <= pc[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pc[15] <= pc[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|adder:adder_inst1
+|processor_tb|adder:adder_inst1
 a[0] => Add0.IN16
 a[1] => Add0.IN15
 a[2] => Add0.IN14
@@ -399,7 +285,7 @@ y[14] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 y[15] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|adder:adder_inst2
+|processor_tb|adder:adder_inst2
 a[0] => Add0.IN32
 a[1] => Add0.IN31
 a[2] => Add0.IN30
@@ -498,7 +384,7 @@ y[30] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 y[31] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|imem:imem_inst
+|processor_tb|imem:imem_inst
 a[0] => Mux0.IN5
 a[0] => Mux1.IN5
 a[0] => Mux2.IN5
@@ -1675,7 +1561,7 @@ instIn[7] => memory[62][7].DATAIN
 instIn[7] => memory[63][7].DATAIN
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_IF_ID_instr
+|processor_tb|pipeline_register:pipeline_register_inst_IF_ID_instr
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -1774,7 +1660,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_IF_ID_inst_pc
+|processor_tb|pipeline_register:pipeline_register_IF_ID_inst_pc
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -1825,7 +1711,7 @@ dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
 dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_IF_ID_inst_pc_4
+|processor_tb|pipeline_register:pipeline_register_IF_ID_inst_pc_4
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -1876,7 +1762,7 @@ dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
 dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|register_file:register_file_inst
+|processor_tb|register_file:register_file_inst
 clk => registerFile[31][0].CLK
 clk => registerFile[31][1].CLK
 clk => registerFile[31][2].CLK
@@ -6503,7 +6389,7 @@ dout[7] <= dout[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 Ready_Byte <= Ready_Byte~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|extend:extend_inst
+|processor_tb|extend:extend_inst
 imm_src[0] => Decoder0.IN2
 imm_src[0] => Mux0.IN5
 imm_src[0] => Mux1.IN5
@@ -6753,7 +6639,7 @@ extended_imm[30] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 extended_imm[31] <= extended_imm.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_ID_EX_instr
+|processor_tb|pipeline_register:pipeline_register_inst_ID_EX_instr
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -6852,7 +6738,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_ID_EX_inst_pc
+|processor_tb|pipeline_register:pipeline_register_ID_EX_inst_pc
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -6903,106 +6789,7 @@ dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
 dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_ID_EX_read_data_1
-clk => reg_data[0].CLK
-clk => reg_data[1].CLK
-clk => reg_data[2].CLK
-clk => reg_data[3].CLK
-clk => reg_data[4].CLK
-clk => reg_data[5].CLK
-clk => reg_data[6].CLK
-clk => reg_data[7].CLK
-clk => reg_data[8].CLK
-clk => reg_data[9].CLK
-clk => reg_data[10].CLK
-clk => reg_data[11].CLK
-clk => reg_data[12].CLK
-clk => reg_data[13].CLK
-clk => reg_data[14].CLK
-clk => reg_data[15].CLK
-clk => reg_data[16].CLK
-clk => reg_data[17].CLK
-clk => reg_data[18].CLK
-clk => reg_data[19].CLK
-clk => reg_data[20].CLK
-clk => reg_data[21].CLK
-clk => reg_data[22].CLK
-clk => reg_data[23].CLK
-clk => reg_data[24].CLK
-clk => reg_data[25].CLK
-clk => reg_data[26].CLK
-clk => reg_data[27].CLK
-clk => reg_data[28].CLK
-clk => reg_data[29].CLK
-clk => reg_data[30].CLK
-clk => reg_data[31].CLK
-din[0] => reg_data[0].DATAIN
-din[1] => reg_data[1].DATAIN
-din[2] => reg_data[2].DATAIN
-din[3] => reg_data[3].DATAIN
-din[4] => reg_data[4].DATAIN
-din[5] => reg_data[5].DATAIN
-din[6] => reg_data[6].DATAIN
-din[7] => reg_data[7].DATAIN
-din[8] => reg_data[8].DATAIN
-din[9] => reg_data[9].DATAIN
-din[10] => reg_data[10].DATAIN
-din[11] => reg_data[11].DATAIN
-din[12] => reg_data[12].DATAIN
-din[13] => reg_data[13].DATAIN
-din[14] => reg_data[14].DATAIN
-din[15] => reg_data[15].DATAIN
-din[16] => reg_data[16].DATAIN
-din[17] => reg_data[17].DATAIN
-din[18] => reg_data[18].DATAIN
-din[19] => reg_data[19].DATAIN
-din[20] => reg_data[20].DATAIN
-din[21] => reg_data[21].DATAIN
-din[22] => reg_data[22].DATAIN
-din[23] => reg_data[23].DATAIN
-din[24] => reg_data[24].DATAIN
-din[25] => reg_data[25].DATAIN
-din[26] => reg_data[26].DATAIN
-din[27] => reg_data[27].DATAIN
-din[28] => reg_data[28].DATAIN
-din[29] => reg_data[29].DATAIN
-din[30] => reg_data[30].DATAIN
-din[31] => reg_data[31].DATAIN
-dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
-dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
-dout[2] <= reg_data[2].DB_MAX_OUTPUT_PORT_TYPE
-dout[3] <= reg_data[3].DB_MAX_OUTPUT_PORT_TYPE
-dout[4] <= reg_data[4].DB_MAX_OUTPUT_PORT_TYPE
-dout[5] <= reg_data[5].DB_MAX_OUTPUT_PORT_TYPE
-dout[6] <= reg_data[6].DB_MAX_OUTPUT_PORT_TYPE
-dout[7] <= reg_data[7].DB_MAX_OUTPUT_PORT_TYPE
-dout[8] <= reg_data[8].DB_MAX_OUTPUT_PORT_TYPE
-dout[9] <= reg_data[9].DB_MAX_OUTPUT_PORT_TYPE
-dout[10] <= reg_data[10].DB_MAX_OUTPUT_PORT_TYPE
-dout[11] <= reg_data[11].DB_MAX_OUTPUT_PORT_TYPE
-dout[12] <= reg_data[12].DB_MAX_OUTPUT_PORT_TYPE
-dout[13] <= reg_data[13].DB_MAX_OUTPUT_PORT_TYPE
-dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
-dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
-dout[16] <= reg_data[16].DB_MAX_OUTPUT_PORT_TYPE
-dout[17] <= reg_data[17].DB_MAX_OUTPUT_PORT_TYPE
-dout[18] <= reg_data[18].DB_MAX_OUTPUT_PORT_TYPE
-dout[19] <= reg_data[19].DB_MAX_OUTPUT_PORT_TYPE
-dout[20] <= reg_data[20].DB_MAX_OUTPUT_PORT_TYPE
-dout[21] <= reg_data[21].DB_MAX_OUTPUT_PORT_TYPE
-dout[22] <= reg_data[22].DB_MAX_OUTPUT_PORT_TYPE
-dout[23] <= reg_data[23].DB_MAX_OUTPUT_PORT_TYPE
-dout[24] <= reg_data[24].DB_MAX_OUTPUT_PORT_TYPE
-dout[25] <= reg_data[25].DB_MAX_OUTPUT_PORT_TYPE
-dout[26] <= reg_data[26].DB_MAX_OUTPUT_PORT_TYPE
-dout[27] <= reg_data[27].DB_MAX_OUTPUT_PORT_TYPE
-dout[28] <= reg_data[28].DB_MAX_OUTPUT_PORT_TYPE
-dout[29] <= reg_data[29].DB_MAX_OUTPUT_PORT_TYPE
-dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
-dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_ID_EX_read_data_2
+|processor_tb|pipeline_register:pipeline_register_inst_ID_EX_read_data_1
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -7101,7 +6888,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_ID_EX_imm_ext
+|processor_tb|pipeline_register:pipeline_register_inst_ID_EX_read_data_2
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -7200,7 +6987,106 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_result_src
+|processor_tb|pipeline_register:pipeline_register_inst_ID_EX_imm_ext
+clk => reg_data[0].CLK
+clk => reg_data[1].CLK
+clk => reg_data[2].CLK
+clk => reg_data[3].CLK
+clk => reg_data[4].CLK
+clk => reg_data[5].CLK
+clk => reg_data[6].CLK
+clk => reg_data[7].CLK
+clk => reg_data[8].CLK
+clk => reg_data[9].CLK
+clk => reg_data[10].CLK
+clk => reg_data[11].CLK
+clk => reg_data[12].CLK
+clk => reg_data[13].CLK
+clk => reg_data[14].CLK
+clk => reg_data[15].CLK
+clk => reg_data[16].CLK
+clk => reg_data[17].CLK
+clk => reg_data[18].CLK
+clk => reg_data[19].CLK
+clk => reg_data[20].CLK
+clk => reg_data[21].CLK
+clk => reg_data[22].CLK
+clk => reg_data[23].CLK
+clk => reg_data[24].CLK
+clk => reg_data[25].CLK
+clk => reg_data[26].CLK
+clk => reg_data[27].CLK
+clk => reg_data[28].CLK
+clk => reg_data[29].CLK
+clk => reg_data[30].CLK
+clk => reg_data[31].CLK
+din[0] => reg_data[0].DATAIN
+din[1] => reg_data[1].DATAIN
+din[2] => reg_data[2].DATAIN
+din[3] => reg_data[3].DATAIN
+din[4] => reg_data[4].DATAIN
+din[5] => reg_data[5].DATAIN
+din[6] => reg_data[6].DATAIN
+din[7] => reg_data[7].DATAIN
+din[8] => reg_data[8].DATAIN
+din[9] => reg_data[9].DATAIN
+din[10] => reg_data[10].DATAIN
+din[11] => reg_data[11].DATAIN
+din[12] => reg_data[12].DATAIN
+din[13] => reg_data[13].DATAIN
+din[14] => reg_data[14].DATAIN
+din[15] => reg_data[15].DATAIN
+din[16] => reg_data[16].DATAIN
+din[17] => reg_data[17].DATAIN
+din[18] => reg_data[18].DATAIN
+din[19] => reg_data[19].DATAIN
+din[20] => reg_data[20].DATAIN
+din[21] => reg_data[21].DATAIN
+din[22] => reg_data[22].DATAIN
+din[23] => reg_data[23].DATAIN
+din[24] => reg_data[24].DATAIN
+din[25] => reg_data[25].DATAIN
+din[26] => reg_data[26].DATAIN
+din[27] => reg_data[27].DATAIN
+din[28] => reg_data[28].DATAIN
+din[29] => reg_data[29].DATAIN
+din[30] => reg_data[30].DATAIN
+din[31] => reg_data[31].DATAIN
+dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= reg_data[2].DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= reg_data[3].DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= reg_data[4].DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= reg_data[5].DB_MAX_OUTPUT_PORT_TYPE
+dout[6] <= reg_data[6].DB_MAX_OUTPUT_PORT_TYPE
+dout[7] <= reg_data[7].DB_MAX_OUTPUT_PORT_TYPE
+dout[8] <= reg_data[8].DB_MAX_OUTPUT_PORT_TYPE
+dout[9] <= reg_data[9].DB_MAX_OUTPUT_PORT_TYPE
+dout[10] <= reg_data[10].DB_MAX_OUTPUT_PORT_TYPE
+dout[11] <= reg_data[11].DB_MAX_OUTPUT_PORT_TYPE
+dout[12] <= reg_data[12].DB_MAX_OUTPUT_PORT_TYPE
+dout[13] <= reg_data[13].DB_MAX_OUTPUT_PORT_TYPE
+dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
+dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
+dout[16] <= reg_data[16].DB_MAX_OUTPUT_PORT_TYPE
+dout[17] <= reg_data[17].DB_MAX_OUTPUT_PORT_TYPE
+dout[18] <= reg_data[18].DB_MAX_OUTPUT_PORT_TYPE
+dout[19] <= reg_data[19].DB_MAX_OUTPUT_PORT_TYPE
+dout[20] <= reg_data[20].DB_MAX_OUTPUT_PORT_TYPE
+dout[21] <= reg_data[21].DB_MAX_OUTPUT_PORT_TYPE
+dout[22] <= reg_data[22].DB_MAX_OUTPUT_PORT_TYPE
+dout[23] <= reg_data[23].DB_MAX_OUTPUT_PORT_TYPE
+dout[24] <= reg_data[24].DB_MAX_OUTPUT_PORT_TYPE
+dout[25] <= reg_data[25].DB_MAX_OUTPUT_PORT_TYPE
+dout[26] <= reg_data[26].DB_MAX_OUTPUT_PORT_TYPE
+dout[27] <= reg_data[27].DB_MAX_OUTPUT_PORT_TYPE
+dout[28] <= reg_data[28].DB_MAX_OUTPUT_PORT_TYPE
+dout[29] <= reg_data[29].DB_MAX_OUTPUT_PORT_TYPE
+dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
+dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor_tb|pipeline_register:pipeline_register_inst_result_src
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 din[0] => reg_data[0].DATAIN
@@ -7209,31 +7095,31 @@ dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_mem_write
+|processor_tb|pipeline_register:pipeline_register_inst_mem_write
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_alu_src
+|processor_tb|pipeline_register:pipeline_register_inst_alu_src
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_reg_write
+|processor_tb|pipeline_register:pipeline_register_inst_reg_write
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_branch
+|processor_tb|pipeline_register:pipeline_register_inst_branch
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_ID_EX_inst_pc_4
+|processor_tb|pipeline_register:pipeline_register_ID_EX_inst_pc_4
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -7284,7 +7170,7 @@ dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
 dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|alu:alu_inst
+|processor_tb|alu:alu_inst
 src_a[0] => Add0.IN32
 src_a[0] => Add1.IN64
 src_a[0] => Equal0.IN31
@@ -7835,7 +7721,7 @@ alu_result[31] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 zero <= zero$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_instr
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_instr
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -7934,7 +7820,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_pc_target
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_pc_target
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -8033,7 +7919,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_alu_result
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_alu_result
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -8132,13 +8018,13 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_zero
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_zero
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_read_data_2
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_read_data_2
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -8237,7 +8123,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_result_src
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_result_src
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 din[0] => reg_data[0].DATAIN
@@ -8246,25 +8132,25 @@ dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_mem_write
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_mem_write
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_reg_write
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_reg_write
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_EX_MEM_branch
+|processor_tb|pipeline_register:pipeline_register_inst_EX_MEM_branch
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_EX_MEM_inst_pc_4
+|processor_tb|pipeline_register:pipeline_register_EX_MEM_inst_pc_4
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -8315,7 +8201,7 @@ dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
 dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|data_memory:data_memory_inst
+|processor_tb|data_memory:data_memory_inst
 clk => mem[63][0].CLK
 clk => mem[63][1].CLK
 clk => mem[63][2].CLK
@@ -11606,7 +11492,7 @@ read_data[30] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
 read_data[31] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_MEM_WB_instr
+|processor_tb|pipeline_register:pipeline_register_inst_MEM_WB_instr
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -11705,7 +11591,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_MEM_WB_read_data
+|processor_tb|pipeline_register:pipeline_register_inst_MEM_WB_read_data
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -11804,7 +11690,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_MEM_WB_alu_result
+|processor_tb|pipeline_register:pipeline_register_inst_MEM_WB_alu_result
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -11903,7 +11789,7 @@ dout[30] <= reg_data[30].DB_MAX_OUTPUT_PORT_TYPE
 dout[31] <= reg_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_MEM_WB_result_src
+|processor_tb|pipeline_register:pipeline_register_inst_MEM_WB_result_src
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 din[0] => reg_data[0].DATAIN
@@ -11912,13 +11798,13 @@ dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 dout[1] <= reg_data[1].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_inst_MEM_WB_reg_write
+|processor_tb|pipeline_register:pipeline_register_inst_MEM_WB_reg_write
 clk => reg_data[0].CLK
 din[0] => reg_data[0].DATAIN
 dout[0] <= reg_data[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Single_Cycle_RISC_Processor|processor:processor_u|pipeline_register:pipeline_register_MEM_WB_inst_pc_4
+|processor_tb|pipeline_register:pipeline_register_MEM_WB_inst_pc_4
 clk => reg_data[0].CLK
 clk => reg_data[1].CLK
 clk => reg_data[2].CLK
@@ -11967,158 +11853,5 @@ dout[12] <= reg_data[12].DB_MAX_OUTPUT_PORT_TYPE
 dout[13] <= reg_data[13].DB_MAX_OUTPUT_PORT_TYPE
 dout[14] <= reg_data[14].DB_MAX_OUTPUT_PORT_TYPE
 dout[15] <= reg_data[15].DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Single_Cycle_RISC_Processor|transmitter:uart_Tx
-data_in[0] => data.DATAB
-data_in[1] => data.DATAB
-data_in[2] => data.DATAB
-data_in[3] => data.DATAB
-data_in[4] => data.DATAB
-data_in[5] => data.DATAB
-data_in[6] => data.DATAB
-data_in[7] => data.DATAB
-wr_en => state.OUTPUTSELECT
-wr_en => state.OUTPUTSELECT
-wr_en => state.OUTPUTSELECT
-wr_en => state.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => data.OUTPUTSELECT
-wr_en => bit_pos.OUTPUTSELECT
-wr_en => bit_pos.OUTPUTSELECT
-wr_en => bit_pos.OUTPUTSELECT
-clk_50m => Tx~reg0.CLK
-clk_50m => bit_pos[0].CLK
-clk_50m => bit_pos[1].CLK
-clk_50m => bit_pos[2].CLK
-clk_50m => data[0].CLK
-clk_50m => data[1].CLK
-clk_50m => data[2].CLK
-clk_50m => data[3].CLK
-clk_50m => data[4].CLK
-clk_50m => data[5].CLK
-clk_50m => data[6].CLK
-clk_50m => data[7].CLK
-clk_50m => state~4.DATAIN
-clken => Tx.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => bit_pos.OUTPUTSELECT
-clken => bit_pos.OUTPUTSELECT
-clken => bit_pos.OUTPUTSELECT
-clken => Tx.OUTPUTSELECT
-clken => Tx.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-Tx <= Tx~reg0.DB_MAX_OUTPUT_PORT_TYPE
-Tx_busy <= Tx_busy.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Single_Cycle_RISC_Processor|baudrate:uart_baud
-clk_50m => tx_acc[0].CLK
-clk_50m => tx_acc[1].CLK
-clk_50m => tx_acc[2].CLK
-clk_50m => tx_acc[3].CLK
-clk_50m => tx_acc[4].CLK
-clk_50m => tx_acc[5].CLK
-clk_50m => tx_acc[6].CLK
-clk_50m => tx_acc[7].CLK
-clk_50m => tx_acc[8].CLK
-clk_50m => rx_acc[0].CLK
-clk_50m => rx_acc[1].CLK
-clk_50m => rx_acc[2].CLK
-clk_50m => rx_acc[3].CLK
-clk_50m => rx_acc[4].CLK
-Rxclk_en <= Equal2.DB_MAX_OUTPUT_PORT_TYPE
-Txclk_en <= Equal3.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Single_Cycle_RISC_Processor|receiver:uart_Rx
-Rx => scratch.DATAB
-Rx => scratch.DATAB
-Rx => scratch.DATAB
-Rx => scratch.DATAB
-Rx => scratch.DATAB
-Rx => scratch.DATAB
-Rx => scratch.DATAB
-Rx => scratch.DATAB
-Rx => always0.IN1
-Rx => always0.IN1
-ready <= ready~reg0.DB_MAX_OUTPUT_PORT_TYPE
-clk_50m => ready~reg0.CLK
-clk_50m => data_out[0]~reg0.CLK
-clk_50m => data_out[1]~reg0.CLK
-clk_50m => data_out[2]~reg0.CLK
-clk_50m => data_out[3]~reg0.CLK
-clk_50m => data_out[4]~reg0.CLK
-clk_50m => data_out[5]~reg0.CLK
-clk_50m => data_out[6]~reg0.CLK
-clk_50m => data_out[7]~reg0.CLK
-clk_50m => scratch[0].CLK
-clk_50m => scratch[1].CLK
-clk_50m => scratch[2].CLK
-clk_50m => scratch[3].CLK
-clk_50m => scratch[4].CLK
-clk_50m => scratch[5].CLK
-clk_50m => scratch[6].CLK
-clk_50m => scratch[7].CLK
-clk_50m => bit_pos[0].CLK
-clk_50m => bit_pos[1].CLK
-clk_50m => bit_pos[2].CLK
-clk_50m => bit_pos[3].CLK
-clk_50m => sample[0].CLK
-clk_50m => sample[1].CLK
-clk_50m => sample[2].CLK
-clk_50m => sample[3].CLK
-clk_50m => state~5.DATAIN
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => state.OUTPUTSELECT
-clken => data_out[1]~reg0.ENA
-clken => data_out[0]~reg0.ENA
-clken => ready~reg0.ENA
-clken => data_out[2]~reg0.ENA
-clken => data_out[3]~reg0.ENA
-clken => data_out[4]~reg0.ENA
-clken => data_out[5]~reg0.ENA
-clken => data_out[6]~reg0.ENA
-clken => data_out[7]~reg0.ENA
-clken => scratch[0].ENA
-clken => scratch[1].ENA
-clken => scratch[2].ENA
-clken => scratch[3].ENA
-clken => scratch[4].ENA
-clken => scratch[5].ENA
-clken => scratch[6].ENA
-clken => scratch[7].ENA
-clken => bit_pos[0].ENA
-clken => bit_pos[1].ENA
-clken => bit_pos[2].ENA
-clken => bit_pos[3].ENA
-clken => sample[0].ENA
-clken => sample[1].ENA
-clken => sample[2].ENA
-clken => sample[3].ENA
-data_out[0] <= data_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-data_out[1] <= data_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-data_out[2] <= data_out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-data_out[3] <= data_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-data_out[4] <= data_out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-data_out[5] <= data_out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-data_out[6] <= data_out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-data_out[7] <= data_out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 

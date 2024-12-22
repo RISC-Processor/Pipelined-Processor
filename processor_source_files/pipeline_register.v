@@ -13,5 +13,10 @@ module pipeline_register #(parameter NUM_BITS = 16) (
     end
 
     assign dout = reg_data;
+	
+	initial begin
+        reg_data = 0;
+    end
+
 
 endmodule
