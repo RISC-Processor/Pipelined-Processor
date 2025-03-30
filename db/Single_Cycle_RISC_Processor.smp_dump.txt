@@ -1,9 +1,0 @@
-
-State Machine - |processor_tb|register_file:register_file_inst|current_state
-Name current_state.REG_SENT current_state.BYTE_SENT current_state.SEND_BYTE current_state.OUTPUT_BYTE current_state.OUTPUT_REG current_state.IDLE 
-current_state.IDLE 0 0 0 0 0 0 
-current_state.OUTPUT_REG 0 0 0 0 1 1 
-current_state.OUTPUT_BYTE 0 0 0 1 0 1 
-current_state.SEND_BYTE 0 0 1 0 0 1 
-current_state.BYTE_SENT 0 1 0 0 0 1 
-current_state.REG_SENT 1 0 0 0 0 1 
