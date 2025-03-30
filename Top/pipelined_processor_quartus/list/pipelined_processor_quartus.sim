@@ -1,1 +1,1 @@
-src\pipelined_processor\sim\pipelined_processor_tb.v
+src/pipelined_processor/sim/pipelined_processor_tb.v
