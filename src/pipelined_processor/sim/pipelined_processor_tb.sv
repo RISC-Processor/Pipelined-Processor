@@ -76,7 +76,6 @@ module pipelined_processor_tb
     wire EX_MEM_branch;
     wire EX_MEM_jump;
 
-    
 
     wire [INST_MEMORY_DATA_BUS_WIDTH - 1:0] MEM_WB_instr;
     wire [INST_MEMORY_ADDR_BUS_WIDTH - 1:0] MEM_WB_pc_4;
@@ -555,5 +554,11 @@ module pipelined_processor_tb
         .MEM_WB_instr(MEM_WB_instr),
         .stall(stall)
     );
+
+    initial begin
+        $dumpfile("processor_tb.vcd");
+        $dumpvars(0, processor_tb);
+        #1000 $finish;
+    end
 
 endmodule
