@@ -30,9 +30,9 @@ Once installed, follow these steps to run simulation. Otherwise, you are free to
 
 5. `gtkwave processor_tb.vcd`
 
-![Waveform 1](/src/pipelined_processor/sim/pipelined_processor_1.JPG)
+![Waveform 1](/res/pipelined_processor_1.JPG)
 
-![Waveform 2](/src/pipelined_processor/sim/pipelined_processor_2.JPG)
+![Waveform 2](/res/pipelined_processor_2.JPG)
 
 ## Build Project
 
