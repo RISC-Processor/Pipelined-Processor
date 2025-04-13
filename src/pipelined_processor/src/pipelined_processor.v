@@ -3,21 +3,21 @@ module pipelined_processor
         parameter BUS_WIDTH = 32
     )
     (
-		  input wire clk,
-		  input rst,
-		  output [7: 0] LEDG,
-		  output [7: 0] LEDR,
+		input wire clk,
+	    input rst,
+		output [7: 0] LEDG,
+		output [7: 0] LEDR,
 		  
-		  input en,
-		  input Tx_busy,
-		  output [7:0]   dout,        // Output is now 8 bits
-		  output Ready_Byte,   // Ready signal for 8-bit data
+		input en,
+		input Tx_busy,
+		output [7:0]   dout,        // Output is now 8 bits
+		output Ready_Byte,   // Ready signal for 8-bit data
 		  
-		  input clk_50M,
+		input clk_50M,
 		  
-		  input[7: 0] instIn,
-	     input enable,
-		  output [55:0] HEXx
+		input[7: 0] instIn,
+	    input enable,
+		output [55:0] HEXx
 	 );
     
     localparam DATA_MEMORY_ADDR_BUS_WIDTH = 32;
@@ -149,11 +149,11 @@ module pipelined_processor
     pc # (INST_MEMORY_ADDR_BUS_WIDTH) pc_inst (
         .stall(stall),
         .clk(clk),
-		  .rst(rst),
+		.rst(rst),
         .pc_next(pc_next),
         .pc(pc_out)
 //		  .LEDG(LEDG)
-	 );
+	);
 
 
     // Instantiate adder for adding 4 to pc
@@ -228,7 +228,7 @@ module pipelined_processor
     // Insntiate register_file module
     register_file #(REG_FILE_ADDR_BUS_WIDTH, REG_FILE_DATA_BUS_WIDTH) register_file_inst (
         .clk(clk),
-		  .rst(rst),
+	    .rst(rst),
         .addr1(IF_ID_instr[19:15]),
         .addr2(IF_ID_instr[24:20]),
         .addr3(MEM_WB_instr[11:7]),

@@ -46,8 +46,8 @@ wire [7: 0] RegFiletToTx, RxToIMem;
 wire Rxclk_en, Txclk_en, ready;
 
 
-	wire [55:0] HEXx;
-	assign {HEX0[6:0], HEX1[6:0], HEX2[6:0], HEX3[6:0], HEX4[6:0], HEX5[6:0], HEX6[6:0], HEX7[6:0]} = HEXx;
+wire [55:0] HEXx;
+assign {HEX0[6:0], HEX1[6:0], HEX2[6:0], HEX3[6:0], HEX4[6:0], HEX5[6:0], HEX6[6:0], HEX7[6:0]} = HEXx;
 	
 pipelined_processor processor_u(
 	.clk(KEY[0]),
@@ -55,13 +55,11 @@ pipelined_processor processor_u(
 	.LEDG(LEDG[7: 0]),
 	.LEDR(LEDR[7: 0]),
 	
-	
 	.en(KEY[2]),
 	.Tx_busy(Tx_busy),
 	.dout(RegFiletToTx),        // Output is now 8 bits
 	.Ready_Byte(Ready_Byte),   // Ready signal for 8-bit data
 	.clk_50M(CLOCK_50),
-	
 	
 	.instIn(RxToIMem),
 	.enable(ready),
@@ -71,28 +69,28 @@ pipelined_processor processor_u(
 
 transmitter uart_Tx(
 				   .data_in(RegFiletToTx),
-					.wr_en(Ready_Byte),
-					.clk_50m(CLOCK_50),
-					.clken(Txclk_en), 
-					.Tx(EX_IO[0]),
-					.Tx_busy(Tx_busy)
-					); 
+				   .wr_en(Ready_Byte),
+				   .clk_50m(CLOCK_50),
+				   .clken(Txclk_en), 
+				   .Tx(EX_IO[0]),
+				   .Tx_busy(Tx_busy)
+				   ); 
 					
 										
 baudrate uart_baud(	
-				   .clk_50m(CLOCK_50),
-					.Rxclk_en(Rxclk_en),
-					.Txclk_en(Txclk_en)
-					);
+				  .clk_50m(CLOCK_50),
+				  .Rxclk_en(Rxclk_en),
+				  .Txclk_en(Txclk_en)
+				  );
 					
 
 receiver uart_Rx(  
-				   .Rx(EX_IO[1]),
-			      .ready(ready),
-					.clk_50m(CLOCK_50),
-					.clken(Rxclk_en), 
-					.data_out(RxToIMem)
-					);
+				.Rx(EX_IO[1]),
+			    .ready(ready),
+				.clk_50m(CLOCK_50),
+				.clken(Rxclk_en), 
+				.data_out(RxToIMem)
+				);
 
 
 

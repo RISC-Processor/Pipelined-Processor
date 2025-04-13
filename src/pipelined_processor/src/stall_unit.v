@@ -1,9 +1,9 @@
 module stall_unit (
-    input wire [31:0] IF_ID_instr,
-    input wire [31:0] ID_EX_instr,
-    input wire [31:0] EX_MEM_instr,
-    input wire [31:0] MEM_WB_instr,
-    output wire stall
+    input  wire [31:0] IF_ID_instr,
+    input  wire [31:0] ID_EX_instr,
+    input  wire [31:0] EX_MEM_instr,
+    input  wire [31:0] MEM_WB_instr,
+    output wire        stall
 );
     wire [4:0] RSd = IF_ID_instr[19:15];
     wire [4:0] RTd = IF_ID_instr[24:20];
@@ -40,13 +40,13 @@ module stall_unit (
     );
 
     
-    assign IF_ID_instr_is_nop = IF_ID_instr == 32'b00000000000000000000000000010011;
-    assign IF_ID_instr_is_zero = IF_ID_instr == 32'b00000000000000000000000000000000;
-    assign ID_EX_instr_is_nop = ID_EX_instr == 32'b00000000000000000000000000010011;
-    assign ID_EX_instr_is_zero = ID_EX_instr == 32'b00000000000000000000000000000000;
-    assign EX_MEM_instr_is_nop = EX_MEM_instr == 32'b00000000000000000000000000010011;
+    assign IF_ID_instr_is_nop = IF_ID_instr    == 32'b00000000000000000000000000010011;
+    assign IF_ID_instr_is_zero = IF_ID_instr   == 32'b00000000000000000000000000000000;
+    assign ID_EX_instr_is_nop = ID_EX_instr    == 32'b00000000000000000000000000010011;
+    assign ID_EX_instr_is_zero = ID_EX_instr   == 32'b00000000000000000000000000000000;
+    assign EX_MEM_instr_is_nop = EX_MEM_instr  == 32'b00000000000000000000000000010011;
     assign EX_MEM_instr_is_zero = EX_MEM_instr == 32'b00000000000000000000000000000000;
-    assign MEM_WB_instr_is_nop = MEM_WB_instr == 32'b00000000000000000000000000010011;
+    assign MEM_WB_instr_is_nop = MEM_WB_instr  == 32'b00000000000000000000000000010011;
     assign MEM_WB_instr_is_zero = MEM_WB_instr == 32'b00000000000000000000000000000000;
 
     assign nop_or_zero = IF_ID_instr_is_nop || IF_ID_instr_is_zero || ID_EX_instr_is_nop || ID_EX_instr_is_zero || EX_MEM_instr_is_nop || EX_MEM_instr_is_zero || MEM_WB_instr_is_nop || MEM_WB_instr_is_zero;

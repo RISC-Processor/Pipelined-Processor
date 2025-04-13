@@ -17,9 +17,5 @@ src/pipelined_processor/src/register_file.v
 src/pipelined_processor/src/stall_unit.v
 
 src/uart/src/buadrate.v
-src/uart/src/DataMemWrapper.sv
-src/uart/src/External.v
-src/uart/src/InstMemWrapper.sv
 src/uart/src/receiver.v
-src/uart/src/RegFileWrapper.sv
 src/uart/src/transmitter.v

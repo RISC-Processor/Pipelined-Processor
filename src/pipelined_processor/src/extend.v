@@ -1,11 +1,6 @@
-module extend
-    //Currently for load word (lw) instruction, this only takes 12 bits,
-    // and sign extend it to 32 bits.
-
-    // Later, we have to consider about the different locations where,
-    // the immediate values are in different instructions.
-    
-    #(parameter DATA_BUS_WIDTH = 32)
+module extend#(
+        parameter DATA_BUS_WIDTH = 32
+    )
     (
         input [2:0] imm_src,
         input [DATA_BUS_WIDTH - 1:0] instr,

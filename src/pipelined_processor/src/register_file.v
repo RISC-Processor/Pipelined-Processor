@@ -4,9 +4,9 @@ module register_file
         parameter DATA_BUS_WIDTH = 32
     )
     (
-		  // From datapath
+		// From datapath
         input clk,// done by hand
-		  input rst,
+		input rst,
         input [ADDR_BUS_WIDTH - 1:0] addr1,
         input [ADDR_BUS_WIDTH - 1:0] addr2,
         input [ADDR_BUS_WIDTH - 1:0] addr3,
@@ -14,14 +14,14 @@ module register_file
         input write_en,
         output [DATA_BUS_WIDTH - 1:0] read_data1,
         output [DATA_BUS_WIDTH - 1:0] read_data2,
-		  output [7: 0] LEDG,
+		output [7: 0] LEDG,
 		  
-		  // From UART
-		  input clk_50M,
-		  input en,
-		  input Tx_busy,
-		  output reg [7:0] dout,// Output is now 8 bits
-		  output reg Ready_Byte// Ready signal for 8-bit data
+		// From UART
+		input clk_50M,
+		input en,
+		input Tx_busy,
+		output reg [7:0] dout,// Output is now 8 bits
+		output reg Ready_Byte// Ready signal for 8-bit data
     );
 
     localparam REG_FILE_DEPTH = 32;
@@ -37,7 +37,8 @@ module register_file
 	 begin
         registerFile[5]  = 32'b00000000000000000000000000000110; // 6
         registerFile[9]  = 32'b00000000000000000000000000000100; // 4
-		  registerFile[0]  = 32'b00000000000000000000000000000000; // Register 0
+		
+        registerFile[0]  = 32'b00000000000000000000000000000000; // Register 0
         registerFile[1]  = 32'b00000000000000000000000000000001; // Register 1
         registerFile[2]  = 32'b00000000000000000000000000000011; // Register 2
         registerFile[3]  = 32'b00000000000000000000000000000111; // Register 3
